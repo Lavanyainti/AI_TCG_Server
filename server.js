@@ -15,7 +15,7 @@ app.use(cors({ origin: "https://beamish-caramel-667a06.netlify.app", credentials
 const port=process.env.PORT || 5000;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const FRONTEND_URL =   'https://beamish-caramel-667a06.netlify.app/';
+const FRONTEND_URL =   'https://beamish-caramel-667a06.netlify.app';
 
 app.get('/login', (req, res) => {
   const params = new URLSearchParams({
