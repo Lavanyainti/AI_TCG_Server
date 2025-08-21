@@ -51,15 +51,22 @@ app.get('/auth/callback', async (req, res) => {
       headers: { Authorization: `token ${access_token}` }
     });
 
-    // Redirect back to frontend with token + login name
-        // Store token in HTTP-only cookie
+    // // Redirect back to frontend with token + login name
+    //     // Store token in HTTP-only cookie
+    // res.cookie("github_token", access_token, {
+    //   httpOnly: true,
+    //   secure: false, // change to true if using HTTPS
+    //   sameSite: "lax",
+    //   maxAge: 24 * 60 * 60 * 1000 // 1 day
+    // });
+
     res.cookie("github_token", access_token, {
       httpOnly: true,
-      secure: false, // change to true if using HTTPS
-      sameSite: "lax",
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
+      secure: true,        // must be true on HTTPS
+      sameSite: "None",    // must be None for Netlify <-> Render
+      maxAge: 24 * 60 * 60 * 1000
     });
-   
+      
     const redirectUrl = `${FRONTEND_URL}/login?login=${encodeURIComponent(userResp.data.login)}`;
     return res.redirect(redirectUrl);
 
