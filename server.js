@@ -9,18 +9,18 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(cors({ origin: "https://beamish-caramel-667a06.netlify.app/", credentials: true }));
 
 // Load env vars
 const port=process.env.PORT || 5000;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const FRONTEND_URL =   'http://localhost:5173';
+const FRONTEND_URL =   'https://beamish-caramel-667a06.netlify.app/';
 
 app.get('/login', (req, res) => {
   const params = new URLSearchParams({
     client_id: CLIENT_ID,
-    redirect_uri: `http://localhost:${process.env.PORT || 5000}/auth/callback`,
+    redirect_uri: `https://ai-tcg-server.onrender.com/auth/callback`,
     scope: 'read:user repo', // access to private repos, for public repos you can change scope
     allow_signup: 'true'
   });
