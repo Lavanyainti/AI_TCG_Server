@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({ origin: "https://beamish-caramel-667a06.netlify.app/", credentials: true }));
+app.use(cors({ origin: "https://beamish-caramel-667a06.netlify.app", credentials: true }));
 
 // Load env vars
 const port=process.env.PORT || 5000;
